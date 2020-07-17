@@ -7,7 +7,8 @@ angular.module('ionic-timepicker.provider', [])
       closeLabel: 'Close',
       inputTime: (((new Date()).getHours() * 60 * 60) + ((new Date()).getMinutes() * 60)),
       format: 12,
-      step: 15
+      step: 15,
+      min: 0
     };
 
     this.configTimePicker = function (inputObj) {
@@ -34,6 +35,7 @@ angular.module('ionic-timepicker.provider', [])
       //Increasing the hours
       $scope.increaseHours = function () {
         $scope.time.hours = Number($scope.time.hours);
+        var minHour = Math.floor($scope.mainObj.min / 3600);
         if ($scope.mainObj.format == 12) {
           if ($scope.time.hours != 12) {
             $scope.time.hours += 1;
@@ -43,6 +45,7 @@ angular.module('ionic-timepicker.provider', [])
         }
         if ($scope.mainObj.format == 24) {
           $scope.time.hours = ($scope.time.hours + 1) % 24;
+          if ($scope.time.hours < minHour || $scope.time.hours == 0) $scope.time.hours = minHour;
         }
         $scope.time.hours = ($scope.time.hours < 10) ? ('0' + $scope.time.hours) : $scope.time.hours;
       };
@@ -50,15 +53,17 @@ angular.module('ionic-timepicker.provider', [])
       //Decreasing the hours
       $scope.decreaseHours = function () {
         $scope.time.hours = Number($scope.time.hours);
+        var minHour = Math.floor($scope.mainObj.min / 3600);
         if ($scope.mainObj.format == 12) {
-          if ($scope.time.hours > 1) {
+          if ($scope.time.hours > minHour && $scope.time.hours != 0) {
             $scope.time.hours -= 1;
           } else {
-            $scope.time.hours = 12;
+            $scope.time.hours = minHour > 12 ? minHour - 12 : minHour;
           }
         }
         if ($scope.mainObj.format == 24) {
-          $scope.time.hours = ($scope.time.hours + 23) % 24;
+          if ($scope.time.hours == minHour) $scope.time.hours = minHour;
+          else $scope.time.hours = ($scope.time.hours + 23) % 24;
         }
         $scope.time.hours = ($scope.time.hours < 10) ? ('0' + $scope.time.hours) : $scope.time.hours;
       };
@@ -66,14 +71,25 @@ angular.module('ionic-timepicker.provider', [])
       //Increasing the minutes
       $scope.increaseMinutes = function () {
         $scope.time.minutes = Number($scope.time.minutes);
-        $scope.time.minutes = ($scope.time.minutes + $scope.mainObj.step) % 60;
+        var minHour = Math.floor($scope.mainObj.min / 3600);
+        var minMinute = ($scope.mainObj.min % 3600) / 60;
+        if ($scope.time.hours == minHour && $scope.time.minutes <= minMinute) {
+          $scope.time.minutes = minMinute;
+        } else {
+          $scope.time.minutes = ($scope.time.minutes + $scope.mainObj.step) % 60;
+        }
         $scope.time.minutes = ($scope.time.minutes < 10) ? ('0' + $scope.time.minutes) : $scope.time.minutes;
       };
 
       //Decreasing the minutes
       $scope.decreaseMinutes = function () {
+        var minHour = Math.floor($scope.mainObj.min / 3600);
+        var minMinute = ($scope.mainObj.min % 3600) / 60;
         $scope.time.minutes = Number($scope.time.minutes);
         $scope.time.minutes = ($scope.time.minutes + (60 - $scope.mainObj.step)) % 60;
+        if ($scope.time.hours == minHour && $scope.time.minutes <= minMinute) { 
+          $scope.time.minutes = minMinute;
+        }
         $scope.time.minutes = ($scope.time.minutes < 10) ? ('0' + $scope.time.minutes) : $scope.time.minutes;
       };
 
@@ -100,6 +116,10 @@ angular.module('ionic-timepicker.provider', [])
           if ($scope.time.hours === 0) {
             $scope.time.hours = 12;
           }
+        }
+
+        if (format == 24 && $scope.time.hours === 0) {
+          $scope.time.hours = 0;
         }
 
         $scope.time.minutes = rem / 60;
