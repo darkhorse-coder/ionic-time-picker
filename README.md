@@ -1,13 +1,10 @@
-[![bitHound Score](https://www.bithound.io/github/rajeshwarpatlolla/ionic-timepicker/badges/score.svg)](https://www.bithound.io/github/rajeshwarpatlolla/ionic-timepicker)
-
 ##Introduction:
 
 This is an `ionic-timepicker` bower component, which can be used in any Ionic framework's application. No additional plugins are required for this component.
 This plugin is completely open source. Please rate this plugin @ [Ionic Market](http://market.ionic.io/plugins/ionictimepicker)
 
-From version 0.5.0, this component has got so many new features and the way you should use is different from the older versions of this component. If you wish to see the documentation for the previous versions of this component, please check the [previous releases](https://github.com/rajeshwarpatlolla/ionic-timepicker/releases)
+From version 0.5.0, this component has got so many new features and the way you should use is different from the older versions of this component. If you wish to see the documentation for the previous versions of this component, 
 
-[View Demo](http://rajeshwarpatlolla.github.io/TimePickerForIonicFramework/demo/ "Demo")
 
 ##Prerequisites.
 
@@ -133,59 +130,3 @@ The css class names for the buttons are as follows
 a) For `Set` button the class name is `button_set` 
 
 b) For `Close` button the class name is `button_close` 
-
-##Versions:
-
-### 1) v0.1.0
-The whole time picker functionality has been implemented, and can be installed with 
-
-bower install ionic-timepicker --save
-
-### 2) v0.1.1
-Directive name has been modified.
-
-### 3) v0.1.2
-If the minutes and hours are less than 10, then 0 will be prepended to the value of minutes/hours.
-
-### 4) v0.2.0
-Callback function added to get the selected time in to the controller.
-
-### 5) v0.2.1
-Class names modified as per [this bug](https://github.com/rajeshwarpatlolla/ionic-timepicker/issues/41).
-
-### 6) v0.3.0
-Features added to customize this component.
-
-### 7) v0.4.0
-#### Bug fixes : [#48](https://github.com/rajeshwarpatlolla/ionic-timepicker/issues/48), [#53](https://github.com/rajeshwarpatlolla/ionic-timepicker/issues/53), [#51](https://github.com/rajeshwarpatlolla/ionic-timepicker/issues/51)
-
-#### PR : [#54](https://github.com/rajeshwarpatlolla/ionic-timepicker/pull/54), 
-
-Few additional enhancements added. 
-
-### 8) v0.5.0
-#### Features
-a) You can configure the ionic-timepicker from the config method. 
-
-### 9) v0.5.1
-#### BugFix : [#75](https://github.com/rajeshwarpatlolla/ionic-timepicker/issues/75)
-
-### 10) v0.6.0
-#### BugFixes : [#80](https://github.com/rajeshwarpatlolla/ionic-timepicker/issues/80), [#86](https://github.com/rajeshwarpatlolla/ionic-timepicker/issues/86)
-
-
-##License:
-[MIT](https://github.com/rajeshwarpatlolla/ionic-timepicker/blob/master/LICENSE.MD "MIT")
-
-##Contact:
-Gmail : rajeshwar.patlolla@gmail.com
-
-Github : https://github.com/rajeshwarpatlolla
-
-Twitter : https://twitter.com/rajeshwar_9032
-
-Facebook : https://www.facebook.com/rajeshwarpatlolla
-
-Paypal : rajeshwar.patlolla@gmail.com
-
-Comment or Rate it : http://market.ionic.io/plugins/ionictimepicker
