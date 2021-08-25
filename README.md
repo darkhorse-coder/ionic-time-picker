@@ -1,7 +1,7 @@
 ##Introduction:
 
 This is an `ionic-timepicker` bower component, which can be used in any Ionic framework's application. No additional plugins are required for this component.
-This plugin is completely open source. Please rate this plugin @ [Ionic Market](http://market.ionic.io/plugins/ionictimepicker)
+This plugin is completely open source.
 
 From version 0.5.0, this component has got so many new features and the way you should use is different from the older versions of this component. If you wish to see the documentation for the previous versions of this component, 
 
